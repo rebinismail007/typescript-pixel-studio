@@ -37,6 +37,6 @@ export default function PixelStudio() {
         <div className="tool-row"><button disabled={!history.past.length || !ready} onClick={() => dispatch({ type: "undo" })}>Undo</button><button disabled={!history.future.length || !ready} onClick={() => dispatch({ type: "redo" })}>Redo</button><button onClick={() => draw(blank())}>Clear</button></div>
         <button className="primary" onClick={() => download("svg")}>Export SVG ↗</button><div className="tool-row"><button onClick={() => download("json")}>Save JSON</button><label className="file-button">Open JSON<input type="file" accept=".json,application/json" aria-label="Open drawing JSON" onChange={async e => { const file = e.target.files?.[0]; if (!file) return; try { if (file.size > 20000) throw new Error("File is too large."); draw(parseDrawing(await file.text())); setNotice("Drawing opened."); } catch { setNotice("That file is not a valid Pixel Studio drawing."); } e.target.value = ""; }}/></label></div>
       </aside></section>
-    <p className="notice" role="status">{notice}</p><footer>A new AI-assisted portfolio experiment · React / Next.js / TypeScript · No account needed</footer>
+    <p className="notice" role="status">{notice}</p><footer>React / Next.js / TypeScript · Draw, experiment and export</footer>
   </main>;
 }
