@@ -1,6 +1,6 @@
 # Pixel Studio — TypeScript / React / Next.js
 
-A tiny 16 × 16 pixel-art editor. Draw an odd little character, flood-fill it, rotate it, and export a sharp SVG. This is a **new AI-assisted portfolio experiment**, not an older school assignment.
+A tiny 16 × 16 pixel-art editor. Draw an odd little character, flood-fill it, rotate it, and export a sharp SVG. This is a **new portfolio experiment**, not an older school assignment.
 
 ## Try it
 
