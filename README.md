@@ -1,41 +1,33 @@
-# TypeScript Survey Dashboard - React and Next.js
+# Pixel Studio — TypeScript / React / Next.js
 
-An interactive team feedback dashboard with typed responses, department filters,
-score summaries and a local check-in form. Built with the Next.js App Router,
-React server/client components and responsive CSS.
+A tiny 16 × 16 pixel-art editor. Draw an odd little character, flood-fill it, rotate it, and export a sharp SVG. This is a **new AI-assisted portfolio experiment**, not an older school assignment.
 
-New AI-assisted learning project, October 2026. Every response is synthetic;
-this is not a prior client or employer project.
+## Try it
 
-## Run
-
-Requires Node.js 24 or newer.
+Requires Node.js 24+.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. Change the team filter, add a check-in and reload:
-browser storage keeps the local changes. Use **Reset demo** to restore the
-sample. Invalid saved data and blocked browser storage display a useful message.
+Open http://127.0.0.1:3000. Click squares to draw; native buttons also support keyboard navigation. The drawing saves in this browser. Export SVG for an image, or JSON to reopen an editable drawing.
+
+## What is implemented
+
+- Immutable TypeScript drawing operations and a bounded undo/redo reducer.
+- Queue-based flood fill with explicit row-boundary handling.
+- Rotation, mirroring, custom colours and validated JSON import.
+- SVG generation from validated hex colours; transparent empty pixels.
+- React client editor, Next.js App Router and `/api/palette` JSON route.
+- Responsive layout, labelled controls and localStorage failure handling.
+
+## Check it
 
 ```sh
 npm test
 npm run typecheck
 npm run build
-npm start
 ```
 
-## Structure
-
-- `lib/surveys.ts`: types, runtime input validation and immutable scoring logic.
-- `app/page.tsx`: server-rendered page with deterministic initial data.
-- `app/components/Dashboard.tsx`: interactive React component and local storage.
-- `app/api/surveys/route.ts`: read-only JSON demo endpoint; supports
-  `?department=Product` and rejects unknown departments.
-- `tests`: filtering, empty states, invalid ratings and duplicate submissions.
-
-Browser submissions are not sent to the JSON endpoint or to the separate C#
-project. This app deliberately runs independently. Authentication, durable
-multi-user storage and a backend connection are possible next steps.
+Four tests exercise fill boundaries, transforms, history branching, and malicious/invalid import data. The editor intentionally has no accounts, collaboration or server-side drawing storage. Click painting is supported; continuous pointer-drag strokes are outside this small example.
